@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] LinkTree</title>
+    <link href="~/css/navbar.css" rel="stylesheet" />
+    <link href="~/css/footerV1.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    @using Microsoft.AspNetCore.Http
+    @using Newtonsoft.Json
+    @inject IHttpContextAccessor HttpContextAccessor
+    @using LinkTree.Models.UserDTO User
+
+</head>
+<body>
+    <nav id="navbar">
+        <a asp-controller="home" asp-action="index">
+            <img src="~/images/navbar/linktree-low-resolution-logo-color-on-transparent-background.png" class="logo" />
+        </a>
+        @if (HttpContextAccessor.HttpContext.Session.GetString("AccessToken") != null)
+        {
+            if (HttpContextAccessor.HttpContext.Session.GetString("User") != null)
+            {
+                var userJson = HttpContextAccessor.HttpContext.Session.GetString("User");
+                var user = JsonConvert.DeserializeObject<User>(userJson);
+                if (user != null)
+                {
+                    <img src="~/images/navbar/user.png" class="user-pic" onclick="toggleMenu()">
+                    <div class="sub-menu-wrap" id="subMenu">
+                        <div class="sub-menu">
+                            <div class="user-info">
+                                <img src="~/images/navbar/user.png">
+                                <h2>Nika kobadize</h2>
+                            </div>
+                            <hr>
+                        </div>
+
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
+                            <p>Edit Profile</p>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa fa-cog" style="color: white;" aria-hidden="true"></i>
+                            <p>Setting</p>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fa fa-question-circle" style="color: white;" aria-hidden="true"></i>
+                            <p>Help</p>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                            <i class="fas fa-sign-out-alt" style="color: white;" aria-hidden="true"></i>
+                            <p>Logout</p>
+                        </a>
+
+                    </div>
+                }
+            }
+        }
+        else
+        {
+            <img src="~/images/navbar/user.png" class="user-pic" onclick="toggleMenu()">
+            <div class="sub-menu-wrap" id="subMenu">
+
+                <a href="#" class="sub-menu-link">
+                    <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
+                    <p>Sign in</p>
+                </a>
+                <a href="#" class="sub-menu-link">
+                    <i class="fa fa-cog" style="color: white;" aria-hidden="true"></i>
+                    <p>Sign Up</p>
+                </a>
+            </div>
+        }
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+    <script>
+        AOS.init();
+    </script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/navbar.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

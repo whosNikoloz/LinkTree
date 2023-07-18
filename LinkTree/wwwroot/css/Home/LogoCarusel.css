@@ -1,0 +1,165 @@
+
+.slider {
+    background: white;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, .125);
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+    .slider::before,
+    .slider::after {
+        background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        content: "";
+        height: 100px;
+        position: absolute;
+        width: 200px;
+        z-index: 2;
+    }
+
+    .slider::after {
+        right: 0;
+        top: 0;
+        transform: rotateZ(180deg);
+    }
+
+    .slider::before {
+        left: 0;
+        top: 0;
+    }
+
+.slide-track {
+    animation: scroll 20s linear infinite;
+    display: flex;
+    width: calc(250px * 16);
+}
+
+.slide {
+    height: 100px;
+    width: 250px;
+}
+
+.logoIG {
+    height: 60px;
+    width: 190px;
+    margin-top: 22px;
+}
+
+.logoGM {
+    height: 100px;
+    width: 220px;
+}
+
+.logoYT {
+    height: 100px;
+    width: 200px;
+}
+
+.logoPN {
+    height: 60px;
+    width: 190px;
+    margin-top: 22px;
+}
+
+.logoFB {
+    height: 100px;
+    width: 170px;
+}
+
+.logoDC {
+    margin-top: 22px;
+    margin-left: 60px;
+    height: 60px;
+    width: 250px;
+}
+
+.logoLK {
+    margin-left: 50px;
+    height: 100px;
+    width: 130px;
+}
+
+.logoTW {
+    height: 100px;
+    width: 200px;
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-250px * 8));
+    }
+}
+
+
+@media (max-width: 768px) {
+    .slider {
+        height: 70px; /* Adjust height to fit smaller screens */
+    }
+
+    .slide-track {
+        width: calc(250px * 12); /* Reduce the number of slides shown on smaller screens */
+    }
+
+    .slide {
+        width: 200px; /* Adjust slide width to fit smaller screens */
+    }
+
+    .logoIG {
+        height: 40px;
+        width: 170px;
+        margin-top: 22px;
+    }
+
+    .logoGM {
+        height: 80px;
+        width: 200px;
+    }
+
+    .logoYT {
+        height: 80px;
+        width: 180px;
+    }
+
+    .logoPN {
+        height: 40px;
+        width: 170px;
+        margin-top: 22px;
+    }
+
+    .logoFB {
+        height: 80px;
+        width: 150px;
+    }
+
+    .logoDC {
+        margin-top: 22px;
+        margin-left: 60px;
+        height: 40px;
+        width: 230px;
+    }
+
+    .logoLK {
+        margin-left: 50px;
+        height: 80px;
+        width: 110px;
+    }
+
+    .logoTW {
+        height: 70px;
+        width: 170px;
+    }
+
+    .logoDC {
+        margin-top: 22px;
+        margin-left: 60px;
+        height: 40px;
+        width: 180px;
+    }
+}
