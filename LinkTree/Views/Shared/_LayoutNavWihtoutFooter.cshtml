@@ -53,7 +53,7 @@
                             <i class="fa fa-question-circle" style="color: white;" aria-hidden="true"></i>
                             <p>Help</p>
                         </a>
-                        <a href="#" class="sub-menu-link">
+                        <a asp-controller="Account" asp-action="Logout" class="sub-menu-link">
                             <i class="fas fa-sign-out-alt" style="color: white;" aria-hidden="true"></i>
                             <p>Logout</p>
                         </a>
@@ -68,13 +68,9 @@
             <img src="~/images/navbar/user.png" class="user-pic" onclick="toggleMenu()">
             <div class="sub-menu-wrap" id="subMenu">
 
-                <a href="#" class="sub-menu-link">
+                <a asp-controller="Account" asp-action="Authentication" class="sub-menu-link">
                     <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
-                    <p>Sign in</p>
-                </a>
-                <a href="#" class="sub-menu-link">
-                    <i class="fa fa-cog" style="color: white;" aria-hidden="true"></i>
-                    <p>Sign Up</p>
+                    <p>Sign In/Sign Up</p>
                 </a>
             </div>
         }

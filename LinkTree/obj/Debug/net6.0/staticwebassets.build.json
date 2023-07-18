@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tHkle8w/rhCct9XdCmWeAHC+zjCa0+WLRMNS6D9tG0M=",
+  "Hash": "hcdKG3sUFksLSKSmhr84ZBJrt9OQ1KHrG7VBbpL4so8=",
   "Source": "LinkTree",
   "BasePath": "_content/LinkTree",
   "Mode": "Default",
@@ -153,12 +153,12 @@
       "OriginalItemSpec": "wwwroot\\css\\Home\\LogoCarusel.css"
     },
     {
-      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\LoginForm.css",
+      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\LoginFormV1.css",
       "SourceId": "LinkTree",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\",
       "BasePath": "_content/LinkTree",
-      "RelativePath": "css/LoginForm.css",
+      "RelativePath": "css/LoginFormV1.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,7 +167,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\LoginForm.css"
+      "OriginalItemSpec": "wwwroot\\css\\LoginFormV1.css"
     },
     {
       "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\NavBar.css",

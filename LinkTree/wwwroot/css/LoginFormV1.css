@@ -48,7 +48,7 @@ h6 span {
 }
 
 .full-height {
-    min-height: 100vh;
+    min-height: 86vh;
 }
 
 [type="checkbox"]:checked,
@@ -149,7 +149,7 @@ h6 span {
 .center-wrap {
     position: absolute;
     width: 100%;
-    padding: 0 35px;
+    padding: 0 67px;
     top: 50%;
     left: 0;
     transform: translate3d(0, -50%, 35px) perspective(100px);
@@ -168,7 +168,7 @@ h6 span {
 .form-style {
     padding: 13px 20px;
     padding-left: 55px;
-    height: 48px;
+    height: 40px;
     width: 100%;
     font-weight: 500;
     border-radius: 4px;
@@ -298,7 +298,27 @@ h6 span {
         box-shadow: 0 8px 24px 0 rgba(16,39,112,.2);
     }
 
+.py-5 {
+    padding-bottom: 0rem !important;
+    padding-top: 0rem !important;
+}
+
+
 @media (max-width: 768px) {
+
+    .full-height {
+        min-height: 75vh;
+    }
+
+    .py-5 {
+        padding-bottom: 0rem !important;
+        padding-top: 0rem !important;
+    }
+
+    .mb-4 {
+        margin-bottom: 0.5rem !important;
+    }
+
     .card-3d-wrap {
         width: 100%;
         max-width: 100%;
@@ -309,7 +329,7 @@ h6 span {
     }
 
     .center-wrap {
-        padding: 0 36px;
+        padding: 0 65px;
     }
 
     .form-style {

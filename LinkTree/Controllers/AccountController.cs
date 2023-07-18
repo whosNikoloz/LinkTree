@@ -102,8 +102,21 @@ namespace LinkTree.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            await HttpContext.SignOutAsync("CustomAuthScheme");
-            return RedirectToAction("Authentication");
+            try
+            {
+                // Remove the access token and user information from the session
+                _httpContextAccessor.HttpContext.Session.Remove("AccessToken");
+                _httpContextAccessor.HttpContext.Session.Remove("User");
+
+                // Redirect to the "Index" action of the "Home" controller
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that occurred during logout
+                // You can log the exception or return a custom error response as needed.
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred during logout.");
+            }
         }
 
 
