@@ -120,6 +120,25 @@ namespace LinkTree.Controllers
         }
 
 
+        public async Task<IActionResult> ResetPassword()
+        {
+            return View();
+        }
+
+		public IActionResult ResetPasswordConfirm()
+		{
+			return View();
+		}
+
+
+
+		public async Task<IActionResult> ForgetPassword()
+        {
+            return View();
+        }
+
+
+
 
         public IActionResult Authentication()
 		{

@@ -22,4 +22,8 @@
     <PackageReference Include="System.Net.Http.Json" Version="7.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\main\logos\" />
+  </ItemGroup>
+
 </Project>

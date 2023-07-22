@@ -1,0 +1,585 @@
+.containerlink {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    margin-top: 40px;
+}
+
+/* Primary section for adding links */
+.primary {
+    margin-top: 20px;
+    flex: 70%;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+/* Secondary section */
+.second {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    flex: 30%;
+    border-left: 1px solid #000;
+}
+
+h1 {
+    padding: 40px;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+li a {
+    text-decoration: none;
+    color: #2d2f31;
+}
+
+.addlink {
+    width: 100%; /* Take 100% of its parent's width */
+    align-items: center;
+    background-color: #071952;
+    border-radius: 100px;
+    color: #ffffff;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+}
+
+    .addlink::after {
+        float: right;
+        right: 10%;
+    }
+
+/* Add width to make the label bigger */
+label {
+    width: 300px; /* You can adjust this value as needed */
+}
+
+
+
+.slide {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #071952;
+    border-radius: 4%;
+    max-height: 384px;
+    clear: both;
+    width: 60%;
+    height: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: height 0.4s ease;
+    margin-top: -9px;
+}
+
+
+
+    .slide li {
+        padding: 30px;
+    }
+
+#touch {
+    position: absolute;
+    opacity: 0;
+    height: 0px;
+}
+
+    #touch:checked + .slide {
+        height: 500px;
+    }
+
+.EnterUrl {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.slide h4 {
+    font-size: 19px;
+    color: white;
+    margin-top: 20px;
+    margin-bottom: -4px;
+    margin-left: -530px;
+}
+
+.slide h3 {
+    font-size: 19px;
+    color: white;
+    margin-top: 7px;
+    margin-bottom: -4px;
+    margin-left: -430px;
+}
+
+.EnterUrl input[type="text"] {
+    height: 32px;
+    text-decoration: none;
+    margin-right: 18px;
+    width: 510px;
+    text-align: left;
+    border: 0;
+    border-radius: 100px;
+    color: black;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    max-width: 510px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    vertical-align: middle;
+}
+
+
+/* CSS */
+.button-18 {
+    align-items: center;
+    background-color: #0A66C2;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+    .button-18:hover,
+    .button-18:focus {
+        background-color: white;
+        color: black;
+    }
+
+    .button-18:active {
+        background: #09223b;
+        color: rgb(255, 255, 255, .7);
+    }
+
+    .button-18:disabled {
+        cursor: not-allowed;
+        background: rgba(116, 116, 116, 0);
+        color: rgba(185, 185, 185, 0.712);
+    }
+
+
+.LogosCompany {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.Company {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #0A66C2;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-color: white;
+    width: 100%; /* Adjust the width of the divider as needed */
+    margin: 20px auto; /* Add margin to center the divider */
+}
+
+@media (max-width: 768px) {
+
+    .addlink {
+        margin-left: 48px;
+        width: 200px; /* Take 100% of its parent's width */
+        align-items: center;
+        background-color: #071952;
+        border-radius: 100px;
+        color: #ffffff;
+        display: inline-flex;
+        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        max-width: 480px;
+        min-height: 40px;
+        min-width: 0px;
+        overflow: hidden;
+    }
+
+    .slide {
+        width: 300px;
+    }
+
+    .button-18 {
+        font-size: 14px;
+    }
+
+    .EnterUrl input[type="text"] {
+        width: 100%;
+        max-width: none;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .slide h4 {
+        margin-left: -221px;
+        font-size: 13px;
+    }
+
+    .Company {
+        padding: 2px 4px;
+    }
+
+    .slide h3 {
+        margin-left: -129px;
+        font-size: 13px;
+    }
+
+    .containerlink {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .primary {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .LogosCompany {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 3px;
+    }
+
+
+
+
+    .FbLogo {
+        width: 57px !important;
+        height: 42px !important;
+    }
+
+    .TwLogo {
+        width: 59px !important;
+        height: 31px !important;
+    }
+
+    .SpLogo {
+        width: 61px !important;
+        height: 35px !important;
+    }
+
+    .IgLogo {
+        width: 49px !important;
+        height: 43px !important;
+    }
+
+    .YtLogo {
+        width: 51px !important;
+        height: 30px !important;
+    }
+
+    .second {
+        margin-top: 20px;
+        border-top: 1px solid #000;
+        border-left: none;
+    }
+
+
+    .Links {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column; /* Display sub-links in a column */
+        align-items: center; /* Add some margin for spacing between primary section and sub-links */
+    }
+
+    .sub-link {
+        display: flex;
+        width: 324px; /* Adjust the width as needed */
+        height: 180px; /* Adjust the height as needed */
+        background-color: #f0f0f0; /* Set the background color as desired */
+        border-radius: 20px; /* Fix the border-radius property */
+        margin: 8px; /* Add some margin to create space between sub-links */
+    }
+
+
+    .sub-link-inputs {
+        display: flex;
+        flex-direction: column; /* Display sub-links in a column */
+        align-items: center;
+    }
+
+    .save {
+        width: 47px;
+        margin-top: 103px;
+        height: 20px;
+        margin-left: -px;
+    }
+
+
+
+    .delete {
+        width: 47px;
+        margin-top: 33px;
+        height: 20px;
+        margin-left: 10px;
+    }
+
+    .sub-link-inputs input[type="text"] {
+        margin-left: 11px;
+        height: 21px;
+        text-decoration: none;
+        margin-right: 18px;
+        width: 204px;
+        text-align: left;
+        border: 0;
+        border-radius: 100px;
+        color: black;
+        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        max-width: 510px;
+        min-width: 0px;
+        overflow: hidden;
+        padding-left: 20px;
+        padding-right: 20px;
+        touch-action: manipulation;
+        transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        vertical-align: middle;
+    }
+
+    .sub-link-inputs-icon {
+        margin-top: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
+
+
+/* Links */
+
+
+.Links {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Display sub-links in a column */
+    align-items: center; /* Add some margin for spacing between primary section and sub-links */
+}
+
+.sub-link {
+    display: flex;
+    width: 730px; /* Adjust the width as needed */
+    height: 180px; /* Adjust the height as needed */
+    background-color: #f0f0f0; /* Set the background color as desired */
+    border-radius: 20px; /* Fix the border-radius property */
+    margin: 15px; /* Add some margin to create space between sub-links */
+}
+
+
+.sub-link-inputs {
+    display: flex;
+    flex-direction: column; /* Display sub-links in a column */
+    align-items: center;
+}
+
+
+
+.delete {
+    width: 83px;
+    margin-top: 34px;
+    height: 20px;
+    margin-left: 72px;
+    align-items: center;
+    background-color: #071952;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+    .delete:hover,
+    .delete:focus {
+        background-color: white;
+        color: black;
+    }
+
+    .delete:active {
+        background: #09223b;
+        color: rgb(255, 255, 255, .7);
+    }
+
+    .delete:disabled {
+        cursor: not-allowed;
+        background: rgba(116, 116, 116, 0);
+        color: rgba(185, 185, 185, 0.712);
+    }
+
+
+.save {
+    width: 83px;
+    margin-top: 104px;
+    height: 12px;
+    margin-left: -83px;
+    align-items: center;
+    background-color: #071952;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 480px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+    .save:hover,
+    .save:focus {
+        background-color: white;
+        color: black;
+    }
+
+    .save:active {
+        background: #09223b;
+        color: rgb(255, 255, 255, .7);
+    }
+
+    .save:disabled {
+        cursor: not-allowed;
+        background: rgba(116, 116, 116, 0);
+        color: rgba(185, 185, 185, 0.712);
+    }
+
+
+
+.sub-link-inputs input[type="text"] {
+    margin-left: 30px;
+    height: 32px;
+    text-decoration: none;
+    margin-right: 18px;
+    width: 467px;
+    text-align: left;
+    border: 0;
+    border-radius: 100px;
+    color: black;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    max-width: 510px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding-left: 20px;
+    padding-right: 20px;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    vertical-align: middle;
+}
+
+.sub-link-inputs-icon {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.FbLogo {
+    width: 70px;
+    height: 50px;
+}
+
+.TwLogo {
+    width: 70px;
+    height: 40px;
+}
+
+.SpLogo {
+    width: 70px;
+    height: 40px;
+}
+
+.IgLogo {
+    width: 50px;
+    height: 50px;
+}
+
+.YtLogo {
+    width: 50px;
+    height: 30px;
+}

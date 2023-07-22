@@ -1,0 +1,94 @@
+.User-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile {
+    width: 52px;
+    margin-bottom: 10px;
+}
+
+.phone {
+    width: 100%;
+}
+
+.phone-container {
+    position: relative;
+    display: inline-block;
+}
+
+.links-in-phone-container {
+    position: absolute;
+    top: 204px;
+    left: 51%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.User-info p {
+    margin-bottom: 0rem;
+}
+
+.links-in-phone {
+    color: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 140px;
+    height: 29px;
+    background-color: #071952;
+    border-radius: 20px;
+    margin: 15px;
+}
+
+    .links-in-phone a {
+        font-size: 10px;
+        margin-bottom: 0rem;
+        text-decoration: none;
+        color: white;
+        z-index: 99;
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden; /* Hide any overflow text */
+        text-overflow: ellipsis; /* Show an ellipsis (...) for overflow text */
+    }
+
+
+.second .button-18 {
+    background-color: #071952;
+    margin-bottom: 30px;
+}
+
+    .second .button-18:hover,
+    .second .button-18:focus {
+        background-color: white;
+        color: black;
+    }
+
+    .second .button-18:active {
+        background: #09223b;
+        color: rgb(255, 255, 255, .7);
+    }
+
+    .second .button-18:disabled {
+        cursor: not-allowed;
+        background: rgba(116, 116, 116, 0);
+        color: rgba(185, 185, 185, 0.712);
+    }
+
+@media (max-width: 768px) {
+    .phone {
+        width: 90%;
+    }
+
+    .links-in-phone-container {
+        top: 195px;
+        left: 46%;
+    }
+
+    .second .button-18 {
+        background-color: #071952;
+        margin-left: -19px;
+        margin-bottom: 30px;
+    }
+}

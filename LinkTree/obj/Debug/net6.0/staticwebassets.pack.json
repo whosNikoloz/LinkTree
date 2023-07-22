@@ -53,6 +53,30 @@
       "PackagePath": "staticwebassets\\Images\\Navbar\\user.png"
     },
     {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\Images\\main\\iphone.png",
+      "PackagePath": "staticwebassets\\Images\\main\\iphone.png"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\Images\\main\\logos\\Facebook_logo.png",
+      "PackagePath": "staticwebassets\\Images\\main\\logos\\Facebook_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\Images\\main\\logos\\Instagram_logo.png",
+      "PackagePath": "staticwebassets\\Images\\main\\logos\\Instagram_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\Images\\main\\logos\\Spotify_logo.png",
+      "PackagePath": "staticwebassets\\Images\\main\\logos\\Spotify_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\Images\\main\\logos\\Twitter_logo.png",
+      "PackagePath": "staticwebassets\\Images\\main\\logos\\Twitter_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\Images\\main\\logos\\Youtube_logo.png",
+      "PackagePath": "staticwebassets\\Images\\main\\logos\\Youtube_logo.png"
+    },
+    {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\AfterReg.css",
       "PackagePath": "staticwebassets\\css\\AfterReg.css"
     },
@@ -77,6 +101,14 @@
       "PackagePath": "staticwebassets\\css\\LoginFormV1.css"
     },
     {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\Main\\primary.css",
+      "PackagePath": "staticwebassets\\css\\Main\\primary.css"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\Main\\second.css",
+      "PackagePath": "staticwebassets\\css\\Main\\second.css"
+    },
+    {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\NavBar.css",
       "PackagePath": "staticwebassets\\css\\NavBar.css"
     },
@@ -99,6 +131,10 @@
     {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\NavbarLayout.js",
       "PackagePath": "staticwebassets\\js\\NavbarLayout.js"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\main.js",
+      "PackagePath": "staticwebassets\\js\\main.js"
     },
     {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\lib\\bootstrap\\LICENSE",

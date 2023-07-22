@@ -1,0 +1,111 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model LinkTree.Models.UserDTO.User
+
+
+<link href="~/css/Main/primary.css" rel="stylesheet" />
+<link href="~/css/Main/second.css" rel="stylesheet" />
+
+
+<div class="containerlink">
+      <div class="primary">
+        <label for="touch"><span class="addlink">+ Add Link</span></label>
+        <input type="checkbox" id="touch">
+        <div class="slide">
+          <h4>Enter URL</h4>
+          <div class="EnterUrl">
+            <input type="text" id="urlInput" placeholder="URL">
+            <button class="button-18" id="addButton">Add</button>
+          </div>
+          <hr class="divider"> <!-- Add the custom divider here -->
+          <h3>Inspired by your interests</h3>
+          <div class="EnterUrl">
+            <div class="LogosCompany">
+              <button class="Company">
+                <img src="/Images/main/logos/Facebook_logo.png"  class="FbLogo">
+              </button>
+              <button class="Company">
+                <img src="/Images/main/logos/Twitter_logo.png"  class="TwLogo">
+              </button>
+              <button class="Company">
+                <img src="/Images/main/logos/Spotify_logo.png"  class="SpLogo">
+              </button>
+              <button class="Company">
+                <img src="/Images/main/logos/Instagram_logo.png"  class="IgLogo">
+              </button>
+              <button class="Company">
+                <img src="/Images/main/logos/Youtube_logo.png"  class="YtLogo">
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="Links">
+          <div class="sub-link">
+            <div class="sub-link-inputs">
+              <div class="sub-link-inputs-icon">
+                <input type="text" placeholder="model.name">
+                <i class="fas fa-edit"></i>
+              </div>
+              <div class="sub-link-inputs-icon">
+                <input type="text" placeholder="model.name">
+                <i class="fas fa-edit"></i>
+              </div>
+            </div>
+            <button class="delete"><i class='fas fa-trash-alt'></i></button>
+            <button class="save"><i class='fa fa-check'></i></button>
+          </div>
+          <div class="sub-link">
+            <div class="sub-link-inputs">
+              <div class="sub-link-inputs-icon">
+                <input type="text" placeholder="model.name">
+                <i class="fas fa-edit"></i>
+              </div>
+              <div class="sub-link-inputs-icon">
+                <input type="text" placeholder="model.name">
+                <i class="fas fa-edit"></i>
+              </div>
+            </div>
+            <button class="delete"><i class='fas fa-trash-alt'></i></button>
+            <button class="save"><i class='fa fa-check'></i></button>
+          </div>
+          
+        </div>  
+      </div>
+      <div class="second">
+        <button class="button-18">Refresh Demo</button>
+        <div class="phone-container">
+          <img class="phone" src="/Images/main/iphone.png" >
+          <div class="links-in-phone-container">
+            <div class="User-info">
+                    @if (Model != null)
+                    {
+                        <img class="profile" src="/Images/Navbar/user.png">
+                        <p>@Model.UserName</p>
+                    }
+                   <img class="profile" src="/Images/Navbar/user.png">
+              <p>UserName</p>
+            </div>
+            <div class="links-in-phone">
+              <a href="model.link">model name</a>
+            </div>
+            <div class="links-in-phone">
+              <a href="model.link">model name</a>
+            </div>
+            <div class="links-in-phone">
+              <a href="model.link">model name</a>
+            </div>
+            <div class="links-in-phone">
+              <a href="model.link">model name</a>
+            </div> 
+            <div class="links-in-phone">
+              <a href="model.link">modeldsadsasdasdasdsasdsda name</a>
+            </div>       
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+<script src="~/js/main.js"></script>
