@@ -11,6 +11,9 @@ using Newtonsoft.Json.Linq;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.SqlServer.Server;
+using Azure.Core;
+using System.Text.RegularExpressions;
 
 namespace LinkTree.Controllers
 {
@@ -119,11 +122,43 @@ namespace LinkTree.Controllers
             }
         }
 
-
-        public async Task<IActionResult> ResetPassword()
+        [HttpGet]
+        public async Task<IActionResult> ResetPassword(string token)
         {
-            return View();
+			if (string.IsNullOrEmpty(token))
+			{
+				// Handle the case when the token is missing or invalid
+				return BadRequest("Invalid token");
+			}
+
+			// Do something with the token, if needed...
+
+			var request = new ResetPasswordRequest()
+			{
+				Token = token
+			};
+
+			return View(request);
         }
+
+        [HttpPost]
+		public async Task<IActionResult> ResetPassword(ResetPasswordRequest request)
+		{   
+            if(request == null)
+            {
+                return BadRequest("request null");
+            }
+			var response = await _client.PostAsJsonAsync("/api/User/Reset-password", request);
+            if(response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ResetPasswordConfirm", "Account");
+            }
+            else
+            {
+				var error = await response.Content.ReadAsStringAsync();
+				return BadRequest(error);
+			}
+		}
 
 		public IActionResult ResetPasswordConfirm()
 		{
@@ -137,10 +172,27 @@ namespace LinkTree.Controllers
             return View();
         }
 
+        [HttpPost]
+		public async Task<IActionResult> ForgetPassword(string email)
+		{
+
+            var response = await _client.PostAsJsonAsync("/api/User/Forgot-password/", email );
+
+			if (response.IsSuccessStatusCode)
+			{
+				return RedirectToAction("ForgetPasswordConfirm", "Account");
+            }
+            else
+            {
+				var error = await response.Content.ReadAsStringAsync();
+				return BadRequest(error);
+			}
+		}
 
 
 
-        public IActionResult Authentication()
+
+		public IActionResult Authentication()
 		{
 			return View();
 		}
@@ -150,5 +202,14 @@ namespace LinkTree.Controllers
             return View();
         }
 
+        public IActionResult ForgetPasswordConfirm()
+        {
+            return View();
+        }
+
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
     }
 }
