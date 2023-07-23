@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.SqlServer.Server;
 using Azure.Core;
 using System.Text.RegularExpressions;
+using System.Text;
 
 namespace LinkTree.Controllers
 {
@@ -264,6 +265,48 @@ namespace LinkTree.Controllers
             return RedirectToAction("Error");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Changepassword(string oldpassword, string newpassword)
+        {
+            if (oldpassword == null || newpassword == null)
+            {
+                return BadRequest("Null");
+            }
+
+            var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+            var generalUser = JsonConvert.DeserializeObject<User>(serializedUser);
+
+            if (generalUser == null)
+            {
+                return RedirectToAction("index", "home");
+            }
+
+            var jsonRequestBody = JsonConvert.SerializeObject(generalUser);
+
+            var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
+
+            // Add the query parameters
+            var queryString = $"?oldpassword={oldpassword}&newpassword={newpassword}";
+            var fullUrl = "/api/User/Change-password/" + queryString;
+
+            var response = await _client.PostAsync(fullUrl, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Get the updated user from the API
+                var updatedUser = JsonConvert.DeserializeObject<User>(await response.Content.ReadAsStringAsync());
+
+                // Update the user in the session
+                _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
+
+                return RedirectToAction("UserControllPanel");
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                return BadRequest(error);
+            }
+        }
 
     }
 }

@@ -101,18 +101,18 @@
                             <!---- Password  -->
                             <h6 class="heading-small text-muted mb-4">User Password</h6>
                             <div class="pl-lg-4">
-                                <form>
+                            <form asp-action="Changepassword" method="post" onsubmit="return validatePassword()">
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-username">Old Password</label>
-                                            <input type="text" id="input-username" class="form-control form-control-alternative" placeholder="Old Password">
+                                            <input type="password" name="oldpassword" class="form-control form-control-alternative" placeholder="Old Password">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-email">New Password</label>
-                                            <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="New Password">
+                                            <input type="password" id="newpassword" name="newpassword" class="form-control form-control-alternative" placeholder="New Password">
                                         </div>
                                     </div>
                                 </div>
@@ -120,12 +120,30 @@
                                     <div class="col-lg-6">
                                         <div class="form-group focused">
                                             <label class="form-control-label" for="input-first-name">Confirm Password</label>
-                                            <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="Confirm Password">
+                                            <input type="password" id="confirmpassword" name="confirmpassword" class="form-control form-control-alternative" placeholder="Confirm Password">
+                                            <span id="passwordError" style="color: red;"></span>
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#!" class="btn btn-info">Change Password</a>
-                                </form>
+                                <button type="submit" class="btn btn-info">Change Password</button>
+                            </form>
+
+                            <script>
+                                function validatePassword() {
+                                    var newPassword = document.getElementById("newpassword").value;
+                                    var confirmPassword = document.getElementById("confirmpassword").value;
+
+                                    // Check if the passwords match
+                                    if (newPassword !== confirmPassword) {
+                                        document.getElementById("passwordError").innerText = "Passwords do not match.";
+                                        return false; // Prevent form submission
+                                    } else {
+                                        document.getElementById("passwordError").innerText = ""; // Clear error message
+                                        return true; // Allow form submission
+                                    }
+                                }
+                            </script>
+
                             </div>
                             <hr class="my-4">
                             <!-- Address -->
@@ -192,6 +210,21 @@
 
 
 
+<script>
+    function validatePassword() {
+        var newPassword = document.getElementById("newpassword").value;
+        var confirmPassword = document.getElementById("confirmpassword").value;
+
+        // Check if the passwords match
+        if (newPassword !== confirmPassword) {
+            document.getElementById("passwordError").innerText = "Passwords do not match.";
+            return false; // Prevent form submission
+        } else {
+            document.getElementById("passwordError").innerText = ""; // Clear error message
+            return true; // Allow form submission
+        }
+    }
+</script>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

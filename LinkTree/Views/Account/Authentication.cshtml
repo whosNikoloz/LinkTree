@@ -40,13 +40,13 @@
                                 <div class="center-wrap">
                                     <div class="section text-center">
                                         <h4 class="mb-4 pb-3" style="color: white;">Sign Up</h4>
-                                        <form  method="post" asp-controller="Account" asp-action="SignUp">
+                                        <form method="post" asp-controller="Account" asp-action="SignUp" onsubmit="return validateSignUpPassword()">
                                             <div class="form-group">
-                                                <input type="text" asp-for="userRegister.UserName"  class="form-style" placeholder="Your Full Name"  autocomplete="off">
+                                                <input type="text" asp-for="userRegister.UserName" class="form-style" placeholder="Your Full Name" autocomplete="off">
                                                 <i class="input-icon fa fa-user"></i>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <input type="email" asp-for="userRegister.Email"  class="form-style" placeholder="Your Email"  autocomplete="off">
+                                                <input type="email" asp-for="userRegister.Email" class="form-style" placeholder="Your Email" autocomplete="off">
                                                 <i class="input-icon fa fa-envelope"></i>
                                             </div>
                                             <div class="form-group mt-2">
@@ -54,13 +54,15 @@
                                                 <i class="input-icon fa fa fa-unlock"></i>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <input type="password" asp-for="userRegister.Password"  class="form-style" placeholder="Your Password"  autocomplete="off">
+                                                <input type="password" asp-for="userRegister.Password" class="form-style" placeholder="Your Password" autocomplete="off">
                                                 <i class="input-icon fa fa fa-unlock"></i>
                                             </div>
                                             <div class="form-group mt-2">
-                                                <input type="password" asp-for="userRegister.ConfirmPassword"  class="form-style" placeholder="Your Password" autocomplete="off">
+                                                <input type="password" asp-for="userRegister.ConfirmPassword" class="form-style" placeholder="Confirm Password" autocomplete="off">
                                                 <i class="input-icon fa fa fa-unlock"></i>
                                             </div>
+                                            <span id="signUpPasswordError" style="color: red;font-size:11px;"></span>
+
                                             <button type="submit" class="btn mt-4">Submit</button>
                                         </form>
                                     </div>
@@ -74,4 +76,18 @@
     </div>
 </div>
 
+<script>
+    function validateSignUpPassword() {
+        var newPassword = document.getElementById("userRegister_Password").value;
+        var confirmPassword = document.getElementById("userRegister_ConfirmPassword").value;
 
+        // Check if the passwords match
+        if (newPassword !== confirmPassword) {
+            document.getElementById("signUpPasswordError").innerText = "Passwords do not match.";
+            return false; // Prevent form submission
+        } else {
+            document.getElementById("signUpPasswordError").innerText = ""; // Clear error message
+            return true; // Allow form submission
+        }
+    }
+</script>
