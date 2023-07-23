@@ -113,8 +113,16 @@
       "PackagePath": "staticwebassets\\css\\NavBar.css"
     },
     {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\controllpanel.css",
+      "PackagePath": "staticwebassets\\css\\controllpanel.css"
+    },
+    {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\footerV1.css",
       "PackagePath": "staticwebassets\\css\\footerV1.css"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\uploadimg.css",
+      "PackagePath": "staticwebassets\\css\\uploadimg.css"
     },
     {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\favicon.ico",
@@ -135,6 +143,10 @@
     {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\main.js",
       "PackagePath": "staticwebassets\\js\\main.js"
+    },
+    {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\profileimgupload.js",
+      "PackagePath": "staticwebassets\\js\\profileimgupload.js"
     },
     {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\lib\\bootstrap\\LICENSE",

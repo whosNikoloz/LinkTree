@@ -211,5 +211,59 @@ namespace LinkTree.Controllers
         {
             return View();
         }
+
+
+
+        public IActionResult UserControllPanel()
+        {
+            var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+
+            // Check if the User data exists in the session
+            if (string.IsNullOrEmpty(serializedUser))
+            {
+                // If not found, handle the situation accordingly (e.g., redirect to an error page)
+                return RedirectToAction("Error");
+            }
+
+            // Deserialize the User object
+            var user = JsonConvert.DeserializeObject<User>(serializedUser);
+            return View(user);
+        }
+
+
+
+        [HttpPost]
+        public async  Task<IActionResult> ChangeNumberOrUserName(User updateduser)
+        {
+
+            if(updateduser == null)
+            {
+                return BadRequest("userNull");
+            }
+
+            var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+            var generalUser = JsonConvert.DeserializeObject<User>(serializedUser);
+
+            if(generalUser == null)
+            {
+                return RedirectToAction("index" ,"home");
+            }
+            generalUser.PhoneNumber = updateduser.PhoneNumber;
+            generalUser.UserName = updateduser.UserName;
+
+
+            var response = await _client.PostAsJsonAsync("/api/User/Change-usernameornumber/", generalUser);
+            if(response.IsSuccessStatusCode)
+            {
+
+                _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(generalUser));
+
+                return RedirectToAction("UserControllPanel");
+            }
+
+            return RedirectToAction("Error");
+        }
+
+
     }
 }

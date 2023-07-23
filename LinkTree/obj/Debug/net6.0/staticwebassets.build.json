@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "KAw5RG14CDOONKMid2CExCeSNzuH2l68NUt9OafYjhE=",
+  "Hash": "pT2Iv3BAat4S6gKy+bWq6s5JH9reiCdm6M/6NBWRWiw=",
   "Source": "LinkTree",
   "BasePath": "_content/LinkTree",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\AfterReg.css"
+    },
+    {
+      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\controllpanel.css",
+      "SourceId": "LinkTree",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\",
+      "BasePath": "_content/LinkTree",
+      "RelativePath": "css/controllpanel.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\controllpanel.css"
     },
     {
       "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\footerV1.css",
@@ -219,6 +236,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\NavBar.css"
+    },
+    {
+      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\uploadimg.css",
+      "SourceId": "LinkTree",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\",
+      "BasePath": "_content/LinkTree",
+      "RelativePath": "css/uploadimg.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\uploadimg.css"
     },
     {
       "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\favicon.ico",
@@ -610,6 +644,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\NavbarLayout.js"
+    },
+    {
+      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\profileimgupload.js",
+      "SourceId": "LinkTree",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\",
+      "BasePath": "_content/LinkTree",
+      "RelativePath": "js/profileimgupload.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\profileimgupload.js"
     },
     {
       "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
