@@ -16,6 +16,7 @@ using Azure.Core;
 using System.Text.RegularExpressions;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Migrations;
+using LinkTree.Models.LinksDTO;
 
 namespace LinkTree.Controllers
 {
@@ -58,6 +59,20 @@ namespace LinkTree.Controllers
                         var jwtToken = User.VerificationToken;
                         _httpContextAccessor.HttpContext.Session.SetString("AccessToken", jwtToken);
                         _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(User));
+
+
+
+
+                        var linkuserresponse = await _client.PutAsJsonAsync("/api/Link/UserWithLinks", User.Email);
+                        if (linkuserresponse.IsSuccessStatusCode)
+                        {
+                            string datawithlinks = await linkuserresponse.Content.ReadAsStringAsync();
+                            var UserFromApiLinks = JsonConvert.DeserializeObject<UserForApi>(datawithlinks);
+                            var Userwihtlink = ConvertApiuserToUser(UserFromApiLinks);
+
+                            _httpContextAccessor.HttpContext.Session.SetString("UserWithLink", JsonConvert.SerializeObject(Userwihtlink));
+                        }
+
 
                         // Generate the URL for the "Index" action of the "Home" controller
                         var homeIndexUrl = Url.Action("Index", "Home");
@@ -233,6 +248,7 @@ namespace LinkTree.Controllers
 
             // Deserialize the User object
             var user = JsonConvert.DeserializeObject<User>(serializedUser);
+            
             return View(user);
         }
 
@@ -346,12 +362,27 @@ namespace LinkTree.Controllers
 			var response = await _client.PostAsJsonAsync("/api/User/userimage/", apiuser);
             if (response.IsSuccessStatusCode)
             {
-                var updatedUser = ConvertApiuserToUser(apiuser);
 
-                _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
+               
+                var getuserResponse = await _client.PostAsJsonAsync("/api/User/UserName/", apiuser.UserName);
 
 
-                return RedirectToAction("UserControllPanel", "Account");
+                if(getuserResponse.IsSuccessStatusCode)
+                {
+                    string responednUser = await getuserResponse.Content.ReadAsStringAsync();
+                    var UserFromApi = JsonConvert.DeserializeObject<UserForApi>(responednUser);
+
+                    var updatedUser = ConvertApiuserToUser(UserFromApi);
+
+                    _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
+                    return RedirectToAction("UserControllPanel", "Account");
+
+                }
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return BadRequest(error);
+                }
 			}
             else
             {
@@ -360,6 +391,67 @@ namespace LinkTree.Controllers
 			}
 
 		}
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> addlink(string url,string name)
+        {
+            var newlink = new LinkRequest
+            {
+                Description = "Not filled",
+                Name = name,
+                link = url,
+            };
+            var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+            var generalUser = JsonConvert.DeserializeObject<User>(serializedUser);
+
+
+            var jsonRequestBody = JsonConvert.SerializeObject(newlink);
+
+            var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
+
+
+            // Add the query parameters
+            var queryString = $"?user={generalUser.UserName}";
+            var fullUrl = "/api/Link/UploadUserLink/" + queryString;
+
+            var response = await _client.PostAsync(fullUrl, content);
+
+            if(response.IsSuccessStatusCode)
+            {
+                var getuserResponse = await _client.PostAsJsonAsync("/api/User/UserName/", generalUser.UserName);
+
+
+                if (getuserResponse.IsSuccessStatusCode)
+                {
+                    string responednUser = await getuserResponse.Content.ReadAsStringAsync();
+                    var UserFromApi = JsonConvert.DeserializeObject<UserForApi>(responednUser);
+
+                    var updatedUser = ConvertApiuserToUser(UserFromApi);
+
+                    _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
+                    return RedirectToAction("Main", "Home");
+
+                }
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return BadRequest(error);
+                }
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                return BadRequest(error);
+            }
+        }
+
+
+
+
+
+
 
 
 

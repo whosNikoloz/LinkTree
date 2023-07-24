@@ -28,7 +28,8 @@ namespace LinkTree.Controllers
             {
                 if (_httpContextAccessor.HttpContext.Session.GetString("User") != null)
                 {
-                    var userJson = _httpContextAccessor.HttpContext.Session.GetString("User");
+                    var userJson = _httpContextAccessor.HttpContext.Session.GetString("UserWithLink");
+
                     var user = JsonConvert.DeserializeObject<User>(userJson);
 
                     if (user != null)
