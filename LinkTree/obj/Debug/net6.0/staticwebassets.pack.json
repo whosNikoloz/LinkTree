@@ -137,6 +137,10 @@
       "PackagePath": "staticwebassets\\js\\Navbar.js"
     },
     {
+      "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\NavbarForUserPanel.js",
+      "PackagePath": "staticwebassets\\js\\NavbarForUserPanel.js"
+    },
+    {
       "Id": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\NavbarLayout.js",
       "PackagePath": "staticwebassets\\js\\NavbarLayout.js"
     },

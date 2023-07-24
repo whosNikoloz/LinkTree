@@ -80,11 +80,21 @@
             <div class="User-info">
                     @if (Model != null)
                     {
-                        <img class="profile" src="/Images/Navbar/user.png">
+                        @if (Model.Picture != null && Model.Picture.Length > 0)
+                        {
+                            string base64Image = Convert.ToBase64String(Model.Picture);
+                            string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
+                            <img src="@imageSource" class="profile" />
+                        }
+                        else
+                        {
+                            <img src="/Images/Navbar/user.png"  class="profile">
+                        }
                         <p>@Model.UserName</p>
+                    }else{
+                        <img class="profile" src="/Images/Navbar/user.png">
+                        <p>UserName</p>
                     }
-                   <img class="profile" src="/Images/Navbar/user.png">
-              <p>UserName</p>
             </div>
             <div class="links-in-phone">
               <a href="model.link">model name</a>

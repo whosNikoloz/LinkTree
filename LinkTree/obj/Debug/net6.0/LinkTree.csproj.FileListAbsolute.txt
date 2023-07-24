@@ -90,3 +90,4 @@ C:\Users\nikol\source\repos\LinkTree\LinkTree\obj\Debug\net6.0\scopedcss\Views\S
 C:\Users\nikol\source\repos\LinkTree\LinkTree\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutWithoutFooter.cshtml.rz.scp.css
 C:\Users\nikol\source\repos\LinkTree\LinkTree\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutNavWihtoutFooter.cshtml.rz.scp.css
 C:\Users\nikol\source\repos\LinkTree\LinkTree\bin\Debug\net6.0\System.Net.Http.Json.dll
+C:\Users\nikol\source\repos\LinkTree\LinkTree\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutForuserPanel.cshtml.rz.scp.css

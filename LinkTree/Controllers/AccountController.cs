@@ -15,6 +15,7 @@ using Microsoft.SqlServer.Server;
 using Azure.Core;
 using System.Text.RegularExpressions;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LinkTree.Controllers
 {
@@ -47,7 +48,11 @@ namespace LinkTree.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     string data = await response.Content.ReadAsStringAsync();
-                    var User = JsonConvert.DeserializeObject<User>(data);
+                    var UserFromApi = JsonConvert.DeserializeObject<UserForApi>(data);
+
+                    var User = ConvertApiuserToUser(UserFromApi);
+
+
                     if(User!=null)
                     {
                         var jwtToken = User.VerificationToken;
@@ -234,7 +239,7 @@ namespace LinkTree.Controllers
 
 
         [HttpPost]
-        public async  Task<IActionResult> ChangeNumberOrUserName(User updateduser)
+        public async  Task<IActionResult> ChangeNumberOrUserName(UserForApi updateduser)
         {
 
             if(updateduser == null)
@@ -253,7 +258,11 @@ namespace LinkTree.Controllers
             generalUser.UserName = updateduser.UserName;
 
 
-            var response = await _client.PostAsJsonAsync("/api/User/Change-usernameornumber/", generalUser);
+            var apiUser = ConvertUserToUserForApi(generalUser);
+
+
+
+			var response = await _client.PostAsJsonAsync("/api/User/Change-usernameornumber/", apiUser);
             if(response.IsSuccessStatusCode)
             {
 
@@ -281,7 +290,9 @@ namespace LinkTree.Controllers
                 return RedirectToAction("index", "home");
             }
 
-            var jsonRequestBody = JsonConvert.SerializeObject(generalUser);
+            var apiUser = ConvertUserToUserForApi(generalUser);
+
+			var jsonRequestBody = JsonConvert.SerializeObject(apiUser);
 
             var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
 
@@ -308,5 +319,92 @@ namespace LinkTree.Controllers
             }
         }
 
-    }
+        [HttpPost]
+        public async Task<IActionResult> uploadimg(IFormFile image)
+        {
+            if(image == null)
+            {
+                return BadRequest();
+            }
+			using var stream = new MemoryStream();
+			await image.CopyToAsync(stream);
+			var imageData = stream.ToArray();
+
+			var imageDataString = Convert.ToBase64String(imageData);
+			var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+			var generalUser = JsonConvert.DeserializeObject<User>(serializedUser);
+
+			if (generalUser == null)
+			{
+				return RedirectToAction("index", "home");
+			}
+
+            var apiuser = ConvertUserToUserForApi(generalUser);
+            apiuser.Picture = imageDataString;
+
+
+			var response = await _client.PostAsJsonAsync("/api/User/userimage/", apiuser);
+            if (response.IsSuccessStatusCode)
+            {
+                var updatedUser = ConvertApiuserToUser(apiuser);
+
+                _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
+
+
+                return RedirectToAction("UserControllPanel", "Account");
+			}
+            else
+            {
+				var error = await response.Content.ReadAsStringAsync();
+				return BadRequest(error);
+			}
+
+		}
+
+
+
+        private User ConvertApiuserToUser(UserForApi user)
+        {
+			var mvcUser = new User
+			{
+				Id = user.Id,
+				UserName = user.UserName,
+				Email = user.Email,
+				Picture = Convert.FromBase64String(user.Picture),
+				PhoneNumber = user.PhoneNumber,
+				PasswordHash = user.PasswordHash,
+				PasswordSalt = user.PasswordSalt,
+				VerificationToken = user.VerificationToken,
+				VerifiedAt = user.VerifiedAt,
+				PasswordResetToken = user.PasswordResetToken,
+				ResetTokenExpires = user.ResetTokenExpires,
+				Role = user.Role,
+				Links = user.Links,
+			};
+            return mvcUser;
+		}
+
+
+		private UserForApi ConvertUserToUserForApi(User user)
+		{
+			var apiUser = new UserForApi
+			{
+				Id = user.Id,
+				UserName = user.UserName,
+				Email = user.Email,
+				Picture = Convert.ToBase64String(user.Picture),
+				PhoneNumber = user.PhoneNumber,
+				PasswordHash = user.PasswordHash,
+				PasswordSalt = user.PasswordSalt,
+				VerificationToken = user.VerificationToken,
+				VerifiedAt = user.VerifiedAt,
+				PasswordResetToken = user.PasswordResetToken,
+				ResetTokenExpires = user.ResetTokenExpires,
+				Role = user.Role,
+				Links = user.Links,
+			};
+			return apiUser;
+		}
+
+	}
 }

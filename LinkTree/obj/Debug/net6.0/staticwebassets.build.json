@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pT2Iv3BAat4S6gKy+bWq6s5JH9reiCdm6M/6NBWRWiw=",
+  "Hash": "4pVAtCk757YABXJXV/NlrYS7etbIB/Qb4mspTfUkkdE=",
   "Source": "LinkTree",
   "BasePath": "_content/LinkTree",
   "Mode": "Default",
@@ -627,6 +627,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Navbar.js"
+    },
+    {
+      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\NavbarForUserPanel.js",
+      "SourceId": "LinkTree",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\",
+      "BasePath": "_content/LinkTree",
+      "RelativePath": "js/NavbarForUserPanel.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\NavbarForUserPanel.js"
     },
     {
       "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\js\\NavbarLayout.js",

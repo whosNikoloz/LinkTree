@@ -71,3 +71,36 @@ $('#cropImageBtn').on('click', function (ev) {
         console.log("Image cropped and saved successfully");
     });
 });
+
+$('#cropImageBtn').on('click', function (ev) {
+    $uploadCrop.croppie('result', {
+        type: 'blob', // Request the cropped image as a Blob
+        backgroundColor: "#000000",
+        format: 'png',
+        size: { width: 160, height: 160 }
+    }).then(function (blob) {
+        // Convert Blob to a File object with the desired filename
+        var file = new File([blob], 'cropped_image.png', { type: 'image/png' });
+
+        // Create a FormData object and append the File to it
+        var formData = new FormData();
+        formData.append('image', file);
+
+        // Send the FormData to the server using AJAX
+        $.ajax({
+            url: '/Account/uploadimg', // Replace 'YourController' with your actual controller name
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                // Handle the success response from the server (if needed)
+                console.log("Cropped image uploaded successfully.");
+            },
+            error: function (xhr, status, error) {
+                // Handle the error response from the server (if needed)
+                console.error("Failed to upload cropped image:", error);
+            }
+        });
+    });
+});

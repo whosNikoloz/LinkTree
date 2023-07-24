@@ -1,11 +1,12 @@
 ﻿@{
-    Layout = "_LayoutWithoutFooter";
+    Layout = "_LayoutForuserPanel";
 }
 
 @model LinkTree.Models.UserDTO.User
 
 <link href="~/css/controllpanel.css" rel="stylesheet" />
 <link href="~/css/uploadimg.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css">
 
 <div class="main-content">
     <!-- Top navbar -->
@@ -33,7 +34,16 @@
                         <div class="col-lg-3 order-lg-2">
                             <div class="card-profile-image">
                                 <a href="#">
-                                    <img src="https://demos.creative-tim.com/argon-dashboard/assets-old/img/theme/team-4.jpg" class="rounded-circle">
+                                    @if (Model.Picture != null && Model.Picture.Length > 0)
+                                    {
+                                        string base64Image = Convert.ToBase64String(Model.Picture);
+                                        string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
+                                        <img src="@imageSource" class="rounded-circle" />
+                                    }
+                                    else
+                                    {
+                                        <img src="/Images/Navbar/user.png" class="rounded-circle">
+                                    }
                                 </a>
                             </div>
                         </div>
@@ -46,14 +56,9 @@
                                 @Model.UserName<span class="font-weight-light"></span>
                             </h3>
                             <div class="h5 font-weight-300">
-                                <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                                <i class="ni location_pin mr-2"></i>@Model.Role
                             </div>
-                            <div class="h5 mt-4">
-                                <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
-                            </div>
-                            <div>
-                                <i class="ni education_hat mr-2"></i>University of Computer Science
-                            </div>
+                            
 
                         </div>
                     </div>
@@ -148,7 +153,7 @@
                             <hr class="my-4">
                             <!-- Address -->
                             <h6 class="heading-small text-muted mb-4">Profile Image</h6>
-
+                        <form asp-action="uploadimg" method="post">
                             <div class="container">
                                 <div class="row">
                                     <div class="col-md-12">
@@ -156,12 +161,21 @@
                                             <div class="confirm-identity">
                                                 <div class="ci-user d-flex align-items-center justify-content-center">
                                                     <div class="ci-user-picture">
-                                                        <img src="https://image.flaticon.com/icons/svg/145/145867.svg" id="item-img-output" class="imgpreviewPrf img-fluid" alt="">
+                                                        @if (Model.Picture != null && Model.Picture.Length > 0)
+                                                        {
+                                                            string base64Image = Convert.ToBase64String(Model.Picture);
+                                                            string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
+                                                            <img src="@imageSource" id="item-img-output" class="imgpreviewPrf img-fluid" alt="" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="/Images/Navbar/user.png" id="item-img-output" class="imgpreviewPrf img-fluid" alt="">
+                                                        }
                                                     </div>
                                                 </div>
                                                 <div class="ci-user-btn text-center mt-4">
                                                     <a href="javascript:;" class="userEditeBtn btn-default bg-blue position-relative">
-                                                        <input type="file" class="item-img file center-block filepreviewprofile">
+                                                        <input type="file"  class="item-img file center-block filepreviewprofile">
                                                         Update Profile Photo
                                                     </a>
                                                 </div>
@@ -197,6 +211,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -211,6 +226,7 @@
 
 
 <script>
+
     function validatePassword() {
         var newPassword = document.getElementById("newpassword").value;
         var confirmPassword = document.getElementById("confirmpassword").value;

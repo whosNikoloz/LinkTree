@@ -31,11 +31,29 @@
                 var user = JsonConvert.DeserializeObject<User>(userJson);
                 if (user != null)
                 {
-                    <img src="~/images/navbar/user.png" class="user-pic" onclick="toggleMenu()">
+                    @if (user.Picture != null && user.Picture.Length > 0)
+                    {
+                        string base64Image = Convert.ToBase64String(user.Picture);
+                        string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
+                        <img src="@imageSource" class="user-pic" onclick="toggleMenu()" />
+                    }
+                    else
+                    {
+                        <img src="~/images/navbar/user.png" class="user-pic" onclick="toggleMenu()">
+                    }
                     <div class="sub-menu-wrap" id="subMenu">
                         <div class="sub-menu">
                             <div class="user-info">
-                                <img src="~/images/navbar/user.png">
+                                @if (user.Picture != null && user.Picture.Length > 0)
+                                {
+                                    string base64Image = Convert.ToBase64String(user.Picture);
+                                    string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
+                                    <img src="@imageSource" />
+                                }
+                                else
+                                {
+                                    <img src="~/images/navbar/user.png">
+                                }
                                 <h2>@user.UserName</h2>
                             </div>
                             <hr>
