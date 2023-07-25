@@ -45,16 +45,17 @@
         <div class="Links">
             @foreach(var links in Model.Links)
             {
-                <form >
+                <form asp-action="editlink" asp-controller="Account" method="post">
                     <div class="sub-link">
                         <div class="sub-link-inputs">
                             <div class="sub-link-inputs-icon">
-                                <input type="hidden" name="linkid" value="@links.Id">
-                                <input type="text" value="@links.Name">
+                                <input type="hidden" name="descriptionEdited" value="@links.Description">
+                                <input type="hidden"  name="linkid" value="@links.Id">
+                                <input type="text" name="editedName" value="@links.Name">
                                 <i class="fas fa-edit"></i>
                             </div>
                             <div class="sub-link-inputs-icon">
-                                <input type="text" value="@links.link">
+                                <input type="text" name="editedUrl" value="@links.link">
                                 <i class="fas fa-edit"></i>
                             </div>
                         </div>
@@ -66,7 +67,6 @@
         </div>  
       </div>
       <div class="second">
-        <button class="button-18">Refresh Demo</button>
         <div class="phone-container">
           <img class="phone" src="/Images/main/iphone.png" >
           <div class="links-in-phone-container">

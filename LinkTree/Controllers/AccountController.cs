@@ -244,7 +244,7 @@ namespace LinkTree.Controllers
             // Deserialize the User object
             var user = JsonConvert.DeserializeObject<User>(serializedUser);
 
-            var linkuserresponse = await _client.PutAsJsonAsync("/api/Link/UserWithLinks", user.Email);
+            var linkuserresponse = await _client.PostAsJsonAsync("/api/Link/UserWithLinks", user.Email);
             if (linkuserresponse.IsSuccessStatusCode)
             {
                 string datawithlinks = await linkuserresponse.Content.ReadAsStringAsync();
@@ -446,6 +446,58 @@ namespace LinkTree.Controllers
 
                     _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(Userwihtlink));
                     return RedirectToAction("Main" ,"Home");
+                }
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    return BadRequest(error);
+                }
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                return BadRequest(error);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> editlink(string editedName,string editedUrl,string descriptionEdited,int linkid)
+        {
+
+            var editedLink = new LinkRequest
+            {
+                Name = editedName,
+                link = editedUrl,
+                Description = descriptionEdited,
+            };
+
+            var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+            var generalUser = JsonConvert.DeserializeObject<User>(serializedUser);
+
+
+            var jsonRequestBody = JsonConvert.SerializeObject(editedLink);
+
+            var content = new StringContent(jsonRequestBody, Encoding.UTF8, "application/json");
+
+
+            // Add the query parameters
+            var queryString = $"?username={generalUser.UserName}&linkid={linkid}";
+            var fullUrl = "/api/Link/EditLink/" + queryString;
+
+            var response = await _client.PutAsync(fullUrl, content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var linkuserresponse = await _client.PostAsJsonAsync("/api/Link/UserWithLinks", generalUser.Email);
+                if (linkuserresponse.IsSuccessStatusCode)
+                {
+                    string datawithlinks = await linkuserresponse.Content.ReadAsStringAsync();
+                    var UserFromApiLinks = JsonConvert.DeserializeObject<UserForApi>(datawithlinks);
+                    var Userwihtlink = ConvertApiuserToUser(UserFromApiLinks);
+
+                    _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(Userwihtlink));
+                    return RedirectToAction("Main", "Home");
                 }
                 else
                 {

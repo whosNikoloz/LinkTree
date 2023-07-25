@@ -24,9 +24,9 @@
             <img src="~/images/navbar/linktree-low-resolution-logo-color-on-transparent-background.png" class="logo" />
         </a>
         <ul>
-            <li><i class="fa fa-link" style="color: white;" aria-hidden="true"></i><a href="#"> Links or Resources</a></li>
+            <li><i class="fa fa-link" style="color: white;" aria-hidden="true"></i><a href="#" data-scroll-to="links or resources"> Links or Resources</a></li>
             <li><i class="fa fa-info-circle" style="color: white;" aria-hidden="true"></i><a href="#" data-scroll-to="about"> About</a></li>
-            <li><i class="fa fa-cog" style="color: white;" aria-hidden="true"></i><a href="#"> Customization</a></li>
+            <li><i class="fa fa-cog" style="color: white;" aria-hidden="true"></i><a href="#" data-scroll-to="doit"> Do It</a></li>
             <li><i class="fa fa-tag" style="color: white;" aria-hidden="true"></i><a href="#" data-scroll-to="price"> Pricing</a></li>
         </ul>
         <div class="hamburger" onclick="toggleNav()">
@@ -35,7 +35,7 @@
             <div class="bar"></div>
         </div>
         <div class="sub-menu-wrap" id="suNav">
-            <a href="#" class="sub-menu-link">
+            <a href="#" data-scroll-to="links or resources" class="sub-menu-link">
                 <i class="fa fa-link" style="color: white;" aria-hidden="true"></i>
                 <p>Links or Resources</p>
             </a>
@@ -43,7 +43,7 @@
                 <i class="fa fa-info-circle" style="color: white;" aria-hidden="true"></i>
                 <p>About</p>
             </a>
-            <a href="#" class="sub-menu-link">
+            <a href="#" data-scroll-to="doit" class="sub-menu-link">
                 <i class="fa fa-cog" style="color: white;" aria-hidden="true"></i>
                 <p>Customization</p>
             </a>
