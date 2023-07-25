@@ -23,57 +23,55 @@
         <a asp-controller="home" asp-action="index">
             <img src="~/images/navbar/linktree-low-resolution-logo-color-on-transparent-background.png" class="logo" />
         </a>
-        @if (HttpContextAccessor.HttpContext.Session.GetString("AccessToken") != null)
+        @if (HttpContextAccessor.HttpContext.Session.GetString("User") != null)
         {
-            if (HttpContextAccessor.HttpContext.Session.GetString("User") != null)
+            var userJson = HttpContextAccessor.HttpContext.Session.GetString("User");
+            var user = JsonConvert.DeserializeObject<User>(userJson);
+            if (user != null)
             {
-                var userJson = HttpContextAccessor.HttpContext.Session.GetString("User");
-                var user = JsonConvert.DeserializeObject<User>(userJson);
-                if (user != null)
+                @if (user.Picture != null && user.Picture.Length > 0)
                 {
-                    @if (user.Picture != null && user.Picture.Length > 0)
-                    {
-                        string base64Image = Convert.ToBase64String(user.Picture);
-                        string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
-                        <img src="@imageSource" class="user-pic" onclick="toggleMenu()" />
-                    }
-                    else
-                    {
-                        <img src="~/images/navbar/user.png" class="user-pic" onclick="toggleMenu()">
-                    }
-                    <div class="sub-menu-wrap" id="subMenu">
-                        <div class="sub-menu">
-                            <div class="user-info">
-                                @if (user.Picture != null && user.Picture.Length > 0)
-                                {
-                                    string base64Image = Convert.ToBase64String(user.Picture);
-                                    string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
-                                    <img src="@imageSource" />
-                                }
-                                else
-                                {
-                                    <img src="~/images/navbar/user.png">
-                                }
-                                <h2>@user.UserName</h2>
-                            </div>
-                            <hr>
-                        </div>
-
-                        <a asp-controller="Account" asp-action="UserControllPanel" class="sub-menu-link">
-                            <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
-                            <p>Edit Profile</p>
-                        </a>
-                        <a href="#" class="sub-menu-link">
-                            <i class="fa fa-question-circle" style="color: white;" aria-hidden="true"></i>
-                            <p>Help</p>
-                        </a>
-                        <a asp-controller="Account" asp-action="Logout" class="sub-menu-link">
-                            <i class="fas fa-sign-out-alt" style="color: white;" aria-hidden="true"></i>
-                            <p>Logout</p>
-                        </a>
-                    </div>
+                    string base64Image = Convert.ToBase64String(user.Picture);
+                    string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
+                    <img src="@imageSource" class="user-pic" onclick="toggleMenu()" />
                 }
+                else
+                {
+                    <img src="~/images/navbar/user.png" class="user-pic" onclick="toggleMenu()">
+                }
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                            @if (user.Picture != null && user.Picture.Length > 0)
+                            {
+                                string base64Image = Convert.ToBase64String(user.Picture);
+                                string imageSource = string.Format("data:image/png;base64,{0}", base64Image);
+                                <img src="@imageSource" />
+                            }
+                            else
+                            {
+                                <img src="~/images/navbar/user.png">
+                            }
+                            <h2>@user.UserName</h2>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <a asp-controller="Account" asp-action="UserControllPanel" class="sub-menu-link">
+                        <i class="fa fa-user" style="color: white;" aria-hidden="true"></i>
+                        <p>Edit Profile</p>
+                    </a>
+                    <a href="#" class="sub-menu-link">
+                        <i class="fa fa-question-circle" style="color: white;" aria-hidden="true"></i>
+                        <p>Help</p>
+                    </a>
+                    <a asp-controller="Account" asp-action="Logout" class="sub-menu-link">
+                        <i class="fas fa-sign-out-alt" style="color: white;" aria-hidden="true"></i>
+                        <p>Logout</p>
+                    </a>
+                </div>
             }
+            
         }
         else
         {

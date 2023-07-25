@@ -220,178 +220,7 @@ label {
     margin: 20px auto; /* Add margin to center the divider */
 }
 
-@media (max-width: 768px) {
 
-    .addlink {
-        margin-left: 48px;
-        width: 200px; /* Take 100% of its parent's width */
-        align-items: center;
-        background-color: #071952;
-        border-radius: 100px;
-        color: #ffffff;
-        display: inline-flex;
-        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        justify-content: center;
-        max-width: 480px;
-        min-height: 40px;
-        min-width: 0px;
-        overflow: hidden;
-    }
-
-    .slide {
-        width: 300px;
-    }
-
-    .button-18 {
-        font-size: 14px;
-    }
-
-    .EnterUrl input[type="text"] {
-        width: 100%;
-        max-width: none;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .slide h4 {
-        margin-left: -221px;
-        font-size: 13px;
-    }
-
-    .Company {
-        padding: 2px 4px;
-    }
-
-    .slide h3 {
-        margin-left: -129px;
-        font-size: 13px;
-    }
-
-    .containerlink {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .primary {
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-    }
-
-
-    .LogosCompany {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 3px;
-    }
-
-
-
-
-    .FbLogo {
-        width: 57px !important;
-        height: 42px !important;
-    }
-
-    .TwLogo {
-        width: 59px !important;
-        height: 31px !important;
-    }
-
-    .SpLogo {
-        width: 61px !important;
-        height: 35px !important;
-    }
-
-    .IgLogo {
-        width: 49px !important;
-        height: 43px !important;
-    }
-
-    .YtLogo {
-        width: 51px !important;
-        height: 30px !important;
-    }
-
-    .second {
-        margin-top: 20px;
-        border-top: 1px solid #000;
-        border-left: none;
-    }
-
-
-    .Links {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column; /* Display sub-links in a column */
-        align-items: center; /* Add some margin for spacing between primary section and sub-links */
-    }
-
-    .sub-link {
-        display: flex;
-        width: 324px; /* Adjust the width as needed */
-        height: 180px; /* Adjust the height as needed */
-        background-color: #f0f0f0; /* Set the background color as desired */
-        border-radius: 20px; /* Fix the border-radius property */
-        margin: 8px; /* Add some margin to create space between sub-links */
-    }
-
-
-    .sub-link-inputs {
-        display: flex;
-        flex-direction: column; /* Display sub-links in a column */
-        align-items: center;
-    }
-
-    .save {
-        width: 47px;
-        margin-top: 103px;
-        height: 20px;
-        margin-left: -px;
-    }
-
-
-
-    .delete {
-        width: 47px;
-        margin-top: 33px;
-        height: 20px;
-        margin-left: 10px;
-    }
-
-    .sub-link-inputs input[type="text"] {
-        margin-left: 11px;
-        height: 21px;
-        text-decoration: none;
-        margin-right: 18px;
-        width: 204px;
-        text-align: left;
-        border: 0;
-        border-radius: 100px;
-        color: black;
-        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-        font-size: 16px;
-        font-weight: 600;
-        max-width: 510px;
-        min-width: 0px;
-        overflow: hidden;
-        padding-left: 20px;
-        padding-right: 20px;
-        touch-action: manipulation;
-        transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-        vertical-align: middle;
-    }
-
-    .sub-link-inputs-icon {
-        margin-top: 32px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
 
 
 
@@ -582,4 +411,176 @@ label {
 .YtLogo {
     width: 50px;
     height: 30px;
+}
+
+
+
+@media (max-width: 768px) {
+
+    .addlink {
+        margin-left: 48px;
+        width: 200px; /* Take 100% of its parent's width */
+        align-items: center;
+        background-color: #071952;
+        border-radius: 100px;
+        color: #ffffff;
+        display: inline-flex;
+        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        justify-content: center;
+        max-width: 480px;
+        min-height: 40px;
+        min-width: 0px;
+        overflow: hidden;
+    }
+
+    .slide {
+        width: 300px;
+    }
+
+    .button-18 {
+        font-size: 14px;
+    }
+
+    .EnterUrl input[type="text"] {
+        width: 100%;
+        max-width: none;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .slide h4 {
+        margin-left: -221px;
+        font-size: 13px;
+    }
+
+    .Company {
+        padding: 2px 4px;
+    }
+
+    .slide h3 {
+        margin-left: -129px;
+        font-size: 13px;
+    }
+
+    .containerlink {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .primary {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .LogosCompany {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 3px;
+    }
+
+
+
+
+    .FbLogo {
+        width: 57px !important;
+        height: 42px !important;
+    }
+
+    .TwLogo {
+        width: 59px !important;
+        height: 31px !important;
+    }
+
+    .SpLogo {
+        width: 61px !important;
+        height: 35px !important;
+    }
+
+    .IgLogo {
+        width: 49px !important;
+        height: 43px !important;
+    }
+
+    .YtLogo {
+        width: 51px !important;
+        height: 30px !important;
+    }
+
+    .second {
+        margin-top: 20px;
+        border-top: 1px solid #000;
+        border-left: none;
+    }
+
+
+    .Links {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column; /* Display sub-links in a column */
+        align-items: center; /* Add some margin for spacing between primary section and sub-links */
+    }
+
+    .sub-link {
+        width: 314px; /* Adjust the width as needed */
+        height: 180px; /* Adjust the height as needed */
+        margin: 8px; /* Add some margin to create space between sub-links */
+    }
+
+
+    .sub-link-inputs {
+        display: flex;
+        flex-direction: column; /* Display sub-links in a column */
+        align-items: center;
+    }
+
+    .save {
+        width: 47px;
+        margin-top: 103px;
+        height: 20px;
+        margin-left: -44px;
+    }
+
+
+
+    .delete {
+        width: 47px;
+        margin-top: 33px;
+        height: 20px;
+        margin-left: 10px;
+    }
+
+    .sub-link-inputs input[type="text"] {
+        margin-left: 11px;
+        height: 21px;
+        text-decoration: none;
+        margin-right: 18px;
+        width: 204px;
+        text-align: left;
+        border: 0;
+        border-radius: 100px;
+        color: black;
+        font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        max-width: 510px;
+        min-width: 0px;
+        overflow: hidden;
+        padding-left: 20px;
+        padding-right: 20px;
+        touch-action: manipulation;
+        transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+        vertical-align: middle;
+    }
+
+    .sub-link-inputs-icon {
+        margin-top: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

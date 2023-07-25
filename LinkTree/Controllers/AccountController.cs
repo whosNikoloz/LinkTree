@@ -56,21 +56,14 @@ namespace LinkTree.Controllers
 
                     if(User!=null)
                     {
-                        var jwtToken = User.VerificationToken;
-                        _httpContextAccessor.HttpContext.Session.SetString("AccessToken", jwtToken);
-                        _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(User));
-
-
-
-
-                        var linkuserresponse = await _client.PutAsJsonAsync("/api/Link/UserWithLinks", User.Email);
+                        var linkuserresponse = await _client.PostAsJsonAsync("/api/Link/UserWithLinks", User.Email);
                         if (linkuserresponse.IsSuccessStatusCode)
                         {
                             string datawithlinks = await linkuserresponse.Content.ReadAsStringAsync();
                             var UserFromApiLinks = JsonConvert.DeserializeObject<UserForApi>(datawithlinks);
                             var Userwihtlink = ConvertApiuserToUser(UserFromApiLinks);
 
-                            _httpContextAccessor.HttpContext.Session.SetString("UserWithLink", JsonConvert.SerializeObject(Userwihtlink));
+                            _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(Userwihtlink));
                         }
 
 
@@ -129,8 +122,7 @@ namespace LinkTree.Controllers
             try
             {
                 // Remove the access token and user information from the session
-                _httpContextAccessor.HttpContext.Session.Remove("AccessToken");
-                _httpContextAccessor.HttpContext.Session.Remove("User");
+                _httpContextAccessor.HttpContext.Session.Clear();
 
                 // Redirect to the "Index" action of the "Home" controller
                 return RedirectToAction("Index", "Home");
@@ -235,9 +227,12 @@ namespace LinkTree.Controllers
 
 
 
-        public IActionResult UserControllPanel()
+        public async Task<IActionResult> UserControllPanel()
         {
-            var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+            var serializedUser =  _httpContextAccessor.HttpContext.Session.GetString("User");
+
+            
+
 
             // Check if the User data exists in the session
             if (string.IsNullOrEmpty(serializedUser))
@@ -248,12 +243,26 @@ namespace LinkTree.Controllers
 
             // Deserialize the User object
             var user = JsonConvert.DeserializeObject<User>(serializedUser);
-            
-            return View(user);
+
+            var linkuserresponse = await _client.PutAsJsonAsync("/api/Link/UserWithLinks", user.Email);
+            if (linkuserresponse.IsSuccessStatusCode)
+            {
+                string datawithlinks = await linkuserresponse.Content.ReadAsStringAsync();
+                var UserFromApiLinks = JsonConvert.DeserializeObject<UserForApi>(datawithlinks);
+                var Userwihtlink = ConvertApiuserToUser(UserFromApiLinks);
+
+                _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(Userwihtlink));
+                return View(Userwihtlink);
+            }
+            else
+            {
+                return BadRequest();
+            }
+
         }
 
 
-
+        
         [HttpPost]
         public async  Task<IActionResult> ChangeNumberOrUserName(UserForApi updateduser)
         {
@@ -281,6 +290,8 @@ namespace LinkTree.Controllers
 			var response = await _client.PostAsJsonAsync("/api/User/Change-usernameornumber/", apiUser);
             if(response.IsSuccessStatusCode)
             {
+                _httpContextAccessor.HttpContext.Session.Clear();
+
 
                 _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(generalUser));
 
@@ -322,6 +333,9 @@ namespace LinkTree.Controllers
             {
                 // Get the updated user from the API
                 var updatedUser = JsonConvert.DeserializeObject<User>(await response.Content.ReadAsStringAsync());
+
+                _httpContextAccessor.HttpContext.Session.Clear();
+
 
                 // Update the user in the session
                 _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
@@ -373,6 +387,8 @@ namespace LinkTree.Controllers
                     var UserFromApi = JsonConvert.DeserializeObject<UserForApi>(responednUser);
 
                     var updatedUser = ConvertApiuserToUser(UserFromApi);
+                    _httpContextAccessor.HttpContext.Session.Clear();
+
 
                     _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
                     return RedirectToAction("UserControllPanel", "Account");
@@ -393,6 +409,7 @@ namespace LinkTree.Controllers
 		}
 
 
+        //Linkss,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 
         [HttpPost]
         public async Task<IActionResult> addlink(string url,string name)
@@ -420,25 +437,70 @@ namespace LinkTree.Controllers
 
             if(response.IsSuccessStatusCode)
             {
-                var getuserResponse = await _client.PostAsJsonAsync("/api/User/UserName/", generalUser.UserName);
-
-
-                if (getuserResponse.IsSuccessStatusCode)
+                var linkuserresponse = await _client.PostAsJsonAsync("/api/Link/UserWithLinks", generalUser.Email);
+                if (linkuserresponse.IsSuccessStatusCode)
                 {
-                    string responednUser = await getuserResponse.Content.ReadAsStringAsync();
-                    var UserFromApi = JsonConvert.DeserializeObject<UserForApi>(responednUser);
+                    string datawithlinks = await linkuserresponse.Content.ReadAsStringAsync();
+                    var UserFromApiLinks = JsonConvert.DeserializeObject<UserForApi>(datawithlinks);
+                    var Userwihtlink = ConvertApiuserToUser(UserFromApiLinks);
 
-                    var updatedUser = ConvertApiuserToUser(UserFromApi);
-
-                    _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(updatedUser));
-                    return RedirectToAction("Main", "Home");
-
+                    _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(Userwihtlink));
+                    return RedirectToAction("Main" ,"Home");
                 }
                 else
                 {
                     var error = await response.Content.ReadAsStringAsync();
                     return BadRequest(error);
                 }
+            }
+            else
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                return BadRequest(error);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> deletelink(int linkid)
+        {
+            var serializedUser = _httpContextAccessor.HttpContext.Session.GetString("User");
+
+            // Check if the User data exists in the session
+            if (string.IsNullOrEmpty(serializedUser))
+            {
+                // If not found, handle the situation accordingly (e.g., redirect to an error page)
+                return RedirectToAction("Error");
+            }
+
+            // Deserialize the User object
+            var user = JsonConvert.DeserializeObject<User>(serializedUser);
+
+
+
+            var apiUser = ConvertUserToUserForApi(user);
+
+
+
+            // Add the query parameters
+            var queryString = $"?user={apiUser.UserName}&id={linkid}";
+
+
+            var response = await _client.DeleteAsync($"/api/Link/DeleteLink{queryString}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                // Get the updated user from the API
+                var updatedUser = JsonConvert.DeserializeObject<UserForApi>(await response.Content.ReadAsStringAsync());
+                var convertedUser = ConvertApiuserToUser(updatedUser);
+
+                // Update the user in the session
+
+                _httpContextAccessor.HttpContext.Session.Clear();
+
+
+                _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(convertedUser));
+
+                return RedirectToAction("Main" , "Home");
             }
             else
             {

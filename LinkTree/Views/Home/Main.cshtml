@@ -3,8 +3,7 @@
 }
 @model LinkTree.Models.UserDTO.User
 
-
-<link href="~/css/Main/primary.css" rel="stylesheet" />
+<link href="~/css/main/primary.css" rel="stylesheet" />
 <link href="~/css/Main/second.css" rel="stylesheet" />
 
 
@@ -46,20 +45,23 @@
         <div class="Links">
             @foreach(var links in Model.Links)
             {
-                <div class="sub-link">
-                    <div class="sub-link-inputs">
-                        <div class="sub-link-inputs-icon">
-                            <input type="text" placeholder="@links.Name">
-                            <i class="fas fa-edit"></i>
+                <form >
+                    <div class="sub-link">
+                        <div class="sub-link-inputs">
+                            <div class="sub-link-inputs-icon">
+                                <input type="hidden" name="linkid" value="@links.Id">
+                                <input type="text" value="@links.Name">
+                                <i class="fas fa-edit"></i>
+                            </div>
+                            <div class="sub-link-inputs-icon">
+                                <input type="text" value="@links.link">
+                                <i class="fas fa-edit"></i>
+                            </div>
                         </div>
-                        <div class="sub-link-inputs-icon">
-                            <input type="text" placeholder="@links.link">
-                            <i class="fas fa-edit"></i>
-                        </div>
+                        <button asp-action="deletelink" formmethod="post" asp-controller="Account" type="submit" class="delete"><i class='fas fa-trash-alt'></i></button>
+                        <button type="submit" class="save"><i class='fa fa-check'></i></button>
                     </div>
-                    <button class="delete"><i class='fas fa-trash-alt'></i></button>
-                    <button class="save"><i class='fa fa-check'></i></button>
-                </div>
+                </form>
             }
         </div>  
       </div>
@@ -87,21 +89,12 @@
                         <p>UserName</p>
                     }
             </div>
-            <div class="links-in-phone">
-              <a href="model.link">model name</a>
-            </div>
-            <div class="links-in-phone">
-              <a href="model.link">model name</a>
-            </div>
-            <div class="links-in-phone">
-              <a href="model.link">model name</a>
-            </div>
-            <div class="links-in-phone">
-              <a href="model.link">model name</a>
-            </div> 
-            <div class="links-in-phone">
-              <a href="model.link">modeldsadsasdasdasdsasdsda name</a>
-            </div>       
+                @foreach(var moblink in Model.Links)
+                {
+                    <div class="links-in-phone">
+                        <a href="@moblink.link">@moblink.Name</a>
+                    </div>
+                }
           </div>
         </div>
       </div>
