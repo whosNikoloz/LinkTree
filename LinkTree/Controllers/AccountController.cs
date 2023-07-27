@@ -64,27 +64,31 @@ namespace LinkTree.Controllers
                             var Userwihtlink = ConvertApiuserToUser(UserFromApiLinks);
 
                             _httpContextAccessor.HttpContext.Session.SetString("User", JsonConvert.SerializeObject(Userwihtlink));
+                            var homeIndexUrl = Url.Action("Index", "Home");
+
+                            // Redirect to the dynamically generated URL
+                            return Redirect(homeIndexUrl);
                         }
-
-
-                        // Generate the URL for the "Index" action of the "Home" controller
-                        var homeIndexUrl = Url.Action("Index", "Home");
-
-                        // Redirect to the dynamically generated URL
-                        return Redirect(homeIndexUrl);
+                        else
+                        {
+                            var error = "Invalid Email Or Password";
+                            ViewBag.ErrorMessage = error;
+                            return View("Authentication"); // Return the error message to the Login view
+                        }
                     }
                     else
                     {
-                        var error = "no User was Found";
-                        return BadRequest(error);
+                        var error = "Invalid Email Or Password";
+                        ViewBag.ErrorMessage = error;
+                        return View("Authentication");
                     }
                     
                 }
                 else
                 {
-                    // Handle error response
-                    var error = await response.Content.ReadAsStringAsync();
-                    return BadRequest(error);
+                    var error = "Invalid Email Or Password";
+                    ViewBag.ErrorMessage = error;
+                    return View("Authentication");
                 }
             }
             catch (Exception ex)
@@ -197,8 +201,9 @@ namespace LinkTree.Controllers
             }
             else
             {
-				var error = await response.Content.ReadAsStringAsync();
-				return BadRequest(error);
+                var error = "Invalid Email";
+                ViewBag.ErrorMessage = error;
+                return View("ForgetPassword");
 			}
 		}
 

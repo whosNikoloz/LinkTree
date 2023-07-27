@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4pVAtCk757YABXJXV/NlrYS7etbIB/Qb4mspTfUkkdE=",
+  "Hash": "nOQ/WgeIG8Bx3iQGqdvEIEYaRkGB4GOxp8vNaSga4ck=",
   "Source": "LinkTree",
   "BasePath": "_content/LinkTree",
   "Mode": "Default",
@@ -221,12 +221,12 @@
       "OriginalItemSpec": "wwwroot\\css\\Main\\second.css"
     },
     {
-      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\NavBar.css",
+      "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\navbarV1.css",
       "SourceId": "LinkTree",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\",
       "BasePath": "_content/LinkTree",
-      "RelativePath": "css/NavBar.css",
+      "RelativePath": "css/navbarV1.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -235,7 +235,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\NavBar.css"
+      "OriginalItemSpec": "wwwroot\\css\\navbarV1.css"
     },
     {
       "Identity": "C:\\Users\\nikol\\source\\repos\\LinkTree\\LinkTree\\wwwroot\\css\\uploadimg.css",

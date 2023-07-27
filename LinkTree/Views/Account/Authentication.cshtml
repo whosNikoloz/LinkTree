@@ -29,6 +29,7 @@
                                             <div class="form-group mt-2">
                                                 <input type="password" asp-for="userLogin.Password" class="form-style" placeholder="Your Password"  autocomplete="off">
                                                 <i class="input-icon fa fa-unlock"></i>
+                                                <span style="color: red;font-size:16px;">@ViewBag.ErrorMessage</span>
                                             </div>
                                             <button type="submit" class="btn mt-4">Submit</button>
                                         </form>
@@ -60,9 +61,8 @@
                                             <div class="form-group mt-2">
                                                 <input type="password" asp-for="userRegister.ConfirmPassword" class="form-style" placeholder="Confirm Password" autocomplete="off">
                                                 <i class="input-icon fa fa fa-unlock"></i>
+                                                <span id="signUpPasswordError" style="color: red;font-size:9px;"></span>
                                             </div>
-                                            <span id="signUpPasswordError" style="color: red;font-size:11px;"></span>
-
                                             <button type="submit" class="btn mt-4">Submit</button>
                                         </form>
                                     </div>

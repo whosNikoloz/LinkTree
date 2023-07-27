@@ -25,21 +25,19 @@ namespace LinkTree.Controllers
 
         public IActionResult Main()
         {
-                if (_httpContextAccessor.HttpContext.Session.GetString("User") != null)
-                {
-                    var userJson = _httpContextAccessor.HttpContext.Session.GetString("User");
+            if (_httpContextAccessor.HttpContext.Session.GetString("User") != null)
+            {
+                var userJson = _httpContextAccessor.HttpContext.Session.GetString("User");
 
-                    var user = JsonConvert.DeserializeObject<User>(userJson);
+                var user = JsonConvert.DeserializeObject<User>(userJson);
 
-                    if (user != null)
-                    {
-                        return View(user); // Return the deserialized "user" object, not a new "User" object
-                    }
-                }
+                return View(user);
+            }
+            else
+            {
+                return RedirectToAction("Authentication", "Account");
+            }
 
-            // If no valid user was found, you can return null or an empty "User" object as needed
-            // return View(new User()); // Alternatively, return null
-            return View();
         }
 
         
