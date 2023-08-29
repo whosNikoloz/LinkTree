@@ -1,6 +1,6 @@
 # LinkTree Clone - Your One-Stop Link Aggregator
 
-![LinkTree Clone Banner](LinkTreeMenu)
+![LinkTree Clone Banner](LinkTreeMenu.png)
 
 LinkTree Clone is a comprehensive full-stack web application developed using ASP.NET and C#. This repository houses the codebase for a unique platform that offers an alternative to the well-known LinkTree service. Users can curate a personalized collection of their social media links and generate a single, concise link for easy sharing. With robust authentication, role-based authorization, and JWT token authentication, this project not only showcases your full-stack development skills but also provides a seamless and secure user experience.
 
